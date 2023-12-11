@@ -1,0 +1,79 @@
+*{
+    box-sizing: border-box;
+}
+.navbar{
+    position:sticky;
+    top:0;
+    width:100vw;
+    height:80px;
+    display:flex;
+    justify-content: space-between;
+    padding:1% 5%;
+    padding-left: 4%;
+    padding-right: 4%;
+    background-color: white;
+    box-sizing:border-box;
+}
+.logo{
+    width:15%;
+    height:100%;
+}
+.button-section {
+    display: flex;
+    align-items: center;
+} 
+.button-section button {
+    margin-left: 10px; 
+    padding: 10px 20px;
+    background-color: #3498db; 
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    border-radius: 8px;
+}
+.button-section button.download {
+    width:40%;
+    display: flex;
+    align-items: center;
+}
+.button-section button.download img {
+    margin-right: 5px;
+}
+.button-section select {
+    padding: 8px;
+    margin-left: 10px;
+    border-radius: 4px;
+}
+.functonalities{
+
+    display:flex;
+    border-radius:50px;
+    background-color: white;
+}
+.download
+{
+    font-size: 18px;
+    font-weight:600;
+    color:white;
+    padding: 6%;
+    border-radius: 50px;
+    background-color: var(--Primary-Blue, #0080FF);
+    border:none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-editor{
+    margin-top: 2%;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.Toolbar{
+    padding:1%;
+}
+.editor{
+    padding:1%
+}
