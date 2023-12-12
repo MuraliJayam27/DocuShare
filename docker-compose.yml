@@ -1,0 +1,14 @@
+version: '1'
+services:
+  frontend:
+    image: sagarkataru/frontend:latest
+    ports:
+      - '3000:3000'
+    environment:
+      - REACT_APP_LOCALHOST_KEY="chat-app-current-user"
+  backend:
+    image: sagarkataru/backend:latest
+    ports:
+      - '5000:5000'
+    environment:
+      - MONGO=mongodb+srv://sagar:Dn8l6YXGzHv9fWF3@docushare.dcl3nwu.mongodb.net/
