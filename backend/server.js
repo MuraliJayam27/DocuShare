@@ -6,7 +6,7 @@ const userRoutes=require('./routes/usereroutes')
 const documentRoutes=require('./routes/documentroutes')
 const editorRoutes=require('./routes/editorroutes')
 const cors = require('cors');
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5000;
 const app=express()
 dotEnv.config()
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
