@@ -90,7 +90,7 @@ function Homepage() {
   const handleUpdateDocumentName = async () => {
     try {
       if (editedDocumentName.trim() !== '') {
-        const backendURI = `http://localhost:3001/document/update-document/${selectedDocumentId}`;
+        const backendURI = `http://localhost:5000/document/update-document/${selectedDocumentId}`;
         await axios.put(backendURI, { name: editedDocumentName });
 
         setDocuments((docs) =>

@@ -27,7 +27,7 @@ const DocumentEditor = () => {
     
     try {
       console.log('fetching data');
-      const response = await fetch(`http://localhost:3001/editor/get/${userId}/${documentId}`);
+      const response = await fetch(`http://localhost:5000/editor/get/${userId}/${documentId}`);
       if (!response.ok) {
         throw new Error(`Failed to fetch document content: ${response.status} - ${response.statusText}`);
       }
@@ -49,7 +49,7 @@ const DocumentEditor = () => {
     };
 
     try {
-      const response = await fetch(`http://localhost:3001/editor/update/${userId}/${documentId}`, {
+      const response = await fetch(`http://localhost:5000/editor/update/${userId}/${documentId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ const DocumentEditor = () => {
 
   const handleDownloadClick = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/editor/download/${userId}/${documentId}/${downloadFormat}`);
+      const response = await fetch(`http://localhost:5000/editor/download/${userId}/${documentId}/${downloadFormat}`);
       const blob = await response.blob();
       const link = document.createElement('a');
       link.href = window.URL.createObjectURL(blob);
