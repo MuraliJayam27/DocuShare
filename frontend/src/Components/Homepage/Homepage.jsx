@@ -23,7 +23,7 @@ function Homepage() {
       console.error('userId is missing.');
       return;
     }
-    const backendURI = `http://localhost:3001/document/documents/${userId}`
+    const backendURI = `http://localhost:5000/document/documents/${userId}`
     axios
       .get(backendURI)
       .then((response) => {
@@ -41,7 +41,7 @@ function Homepage() {
   const handleCreateDocument = async () => {
     try {
       if (newDocumentName.trim() !== '') {
-        const backendURI = `http://localhost:3001/document/create-document/${userId}`;
+        const backendURI = `http://localhost:5000/document/create-document/${userId}`;
         const response = await axios.post(backendURI, { name: newDocumentName });
   
         setDocuments([...documents, response.data]);
@@ -72,7 +72,7 @@ function Homepage() {
       const confirmDelete = window.confirm('Are you sure you want to delete the document?');
 
       if (confirmDelete) {
-        const backendURI = `http://localhost:3001/document/delete-document/${documentId}`;
+        const backendURI = `http://localhost:5000/document/delete-document/${documentId}`;
         await axios.delete(backendURI);
 
         setDocuments(documents.filter((doc) => doc._id !== documentId));
