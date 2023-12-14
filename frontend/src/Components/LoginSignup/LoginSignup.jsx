@@ -10,24 +10,22 @@ export const LoginSignup = () => {
     const [password, setPassword] = useState('');
     const [showErrorPopup, setShowErrorPopup] = useState(false);
     const navigate = useNavigate();
-    
     const handleLogin = async () => {
         try {
-            const response = await fetch('http://localhost:5000/users/verify', {
+            const response = await fetch('http://localhost:3001/users/verify', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ email, password }),
             });
-
             if (response.ok) {
                 const { userId } = await response.json();
                 console.log('Login successful');
                 navigate(`/home/${userId}`);
-            } else {
-                console.error('Login failed');
-                // Show the error pop-up
+            }
+            else {
+                console.log('Login failed');
                 setShowErrorPopup(true);
             }
         } catch (error) {
@@ -45,7 +43,7 @@ export const LoginSignup = () => {
                     Build your best ideas together, in DocuShare
                 </div>
                 <div className='asset-image'>
-                    <img src={asset} alt="Welcome to DocuShare"/>
+                    <img src={asset} alt="Welcome to DocuShare" />
                 </div>
             </div>
             <div className='right-part'>
