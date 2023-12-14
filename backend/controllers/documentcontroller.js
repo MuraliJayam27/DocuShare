@@ -1,14 +1,14 @@
 const Document = require('../models/document');
-
+const logger = require('../logger/logging')
 const getDocuments = async (req, res) => {
   try {
     const userId = req.params.userId;
-    console.log('Fetching documents for userId:', userId);
+    logger.info('Fetching documents for userId:'+userId);
     const documents = await Document.find({ userId });
-    console.log('Fetched documents:', documents);
+    logger.info('Fetched documents:', documents);
     res.json(documents);
   } catch (error) {
-    console.error('Error fetching documents:', error);
+    logger.error('Error fetching documents:'+ error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
@@ -20,13 +20,14 @@ const createDocument = async (req, res) => {
 
     const existingDocument = await Document.findOne({ name, userId });
     if (existingDocument) {
+      logger.info('Document with the same name already exists.');
       return res.status(400).json({ error: 'Document with the same name already exists.' });
     }
 
     const newDocument = await Document.create({ name, userId, date_of_creation });
     res.json(newDocument);
   } catch (error) {
-    console.error('Error creating document:', error);
+    logger.error('Error creating document:'+ error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
@@ -35,9 +36,10 @@ const deleteDocument = async (req, res) => {
   try {
     const { documentId } = req.params;
     await Document.findByIdAndDelete(documentId);
+    logger.info('Document deleted successfully:'+ documentId);
     res.json({ message: 'Document deleted successfully' });
   } catch (error) {
-    console.error('Error deleting document:', error);
+    logger.error('Error deleting document:'+ error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
@@ -47,9 +49,10 @@ const updateDocumentName = async (req, res) => {
     const { documentId } = req.params;
     const { name } = req.body;
     const updatedDocument = await Document.findByIdAndUpdate(documentId, { name }, { new: true });
+    logger.info('Document name updated successfully:'+ updatedDocument);
     res.json(updatedDocument);
   } catch (error) {
-    console.error('Error updating document name:', error);
+    logger.error('Error updating document name:'+ error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };

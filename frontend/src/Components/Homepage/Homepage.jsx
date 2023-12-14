@@ -23,7 +23,7 @@ function Homepage() {
       console.error('userId is missing.');
       return;
     }
-    const backendURI = `http://localhost:3001/document/documents/${userId}`
+    const backendURI = `http://localhost:5000/document/documents/${userId}`
     axios
       .get(backendURI)
       .then((response) => {
@@ -41,7 +41,7 @@ function Homepage() {
   const handleCreateDocument = async () => {
     try {
       if (newDocumentName.trim() !== '') {
-        const backendURI = `http://localhost:3001/document/create-document/${userId}`;
+        const backendURI = `http://localhost:5000/document/create-document/${userId}`;
         const response = await axios.post(backendURI, { name: newDocumentName });
   
         setDocuments([...documents, response.data]);
@@ -72,7 +72,7 @@ function Homepage() {
       const confirmDelete = window.confirm('Are you sure you want to delete the document?');
 
       if (confirmDelete) {
-        const backendURI = `http://localhost:3001/document/delete-document/${documentId}`;
+        const backendURI = `http://localhost:5000/document/delete-document/${documentId}`;
         await axios.delete(backendURI);
 
         setDocuments(documents.filter((doc) => doc._id !== documentId));
@@ -90,7 +90,7 @@ function Homepage() {
   const handleUpdateDocumentName = async () => {
     try {
       if (editedDocumentName.trim() !== '') {
-        const backendURI = `http://localhost:3001/document/update-document/${selectedDocumentId}`;
+        const backendURI = `http://localhost:5000/document/update-document/${selectedDocumentId}`;
         await axios.put(backendURI, { name: editedDocumentName });
 
         setDocuments((docs) =>
@@ -111,9 +111,8 @@ function Homepage() {
   };
 
   const logout = () => {
-    // Add your logout logic here
+    
   };
-
   return (
     <div>
       {showPopup || showEditPopup ? <div className="overlay"></div> : null}
@@ -122,9 +121,11 @@ function Homepage() {
         <div className="search-box">
           <img className="searchicon" src={search} alt="search" />
           <input style={{margin:"0", border:"none", borderTopLeftRadius:"0px", borderBottomLeftRadius:"0px"}} className="search-input" type="text" placeholder="Search" />
-
         </div>
-        <button onClick={logout}>Logout</button>
+
+        <Link to={`/`}>
+          <button onClick={logout}>Logout</button>
+        </Link>
       </nav>
       <div className="documentheader">
         Recent Documents
