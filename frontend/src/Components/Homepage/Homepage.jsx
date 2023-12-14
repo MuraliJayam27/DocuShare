@@ -111,7 +111,6 @@ function Homepage() {
   };
 
   const logout = () => {
-    // Add your logout logic here
   };
 
   return (
@@ -124,7 +123,9 @@ function Homepage() {
           <input style={{margin:"0", border:"none", borderTopLeftRadius:"0px", borderBottomLeftRadius:"0px"}} className="search-input" type="text" placeholder="Search" />
 
         </div>
-        <button onClick={logout}>Logout</button>
+        <Link to={`/`}>
+          <button onClick={logout}>Logout</button>
+        </Link>
       </nav>
       <div className="documentheader">
         Recent Documents
