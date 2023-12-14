@@ -11,11 +11,4 @@ services:
     ports:
       - '5000:5000'
     environment:
-      - MONGO_URI=mongodb://localhost:27017/Docushare
-
-  mongodb_db:
-    image: mongo:latest
-    ports:
-      - "27017:27017"
-
-
+      - MONGO=mongodb+srv://sagar:Dn8l6YXGzHv9fWF3@docushare.dcl3nwu.mongodb.net/
