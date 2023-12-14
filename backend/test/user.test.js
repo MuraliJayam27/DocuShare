@@ -42,6 +42,7 @@ describe('User API Tests', () => {
         } catch (error) {
             console.error('Error during test:', error);
             throw error;
+            
         }
     });
 });
